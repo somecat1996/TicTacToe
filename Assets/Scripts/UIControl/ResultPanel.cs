@@ -12,6 +12,12 @@ public class ResultPanel : MonoBehaviour
     private float fadeTime;
     private float fadeTimer;
     private Coroutine coroutine;
+
+    /// <summary>
+    /// Set panel text and show panel, if showTime > 0, panel will have fade out effect
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="showTime"> fade out time</param>
     public void SetInfo(string text, float showTime)
     {
         if (coroutine is not null && fadeTimer > 0)
@@ -27,6 +33,10 @@ public class ResultPanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fade out panel and text
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FadeOut()
     {
         while (fadeTimer > 0)

@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
         NextTurn();
     }
 
+    /// <summary>
+    /// Start next turn
+    /// </summary>
     private void NextTurn()
     {
         xTurn = !xTurn;

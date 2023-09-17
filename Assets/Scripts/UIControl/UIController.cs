@@ -19,8 +19,6 @@ public class UIController : MonoBehaviour
     void Start()
     {
         cellList = new List<TMP_Text>();
-        cellGroup.GetComponent<GridLayoutGroup>().cellSize = new Vector2((Screen.height / 485 * 1080 - 6) / 3, (Screen.height / 485 * 1080 - 6) / 3);
-        cellGroup.GetComponent<GridLayoutGroup>().spacing = new Vector2(3, 3);
         // Load all board cells
         for (var i = 0; i < cellGroup.childCount; i++)
         {
@@ -51,6 +49,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set cell
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="ch"></param>
     public void SetCell(int index, char ch)
     {
         cellGroup.GetChild(index).GetComponent<Button>().enabled = false;
@@ -60,6 +63,9 @@ public class UIController : MonoBehaviour
             cellList[index].text = "X";
     }
 
+    /// <summary>
+    /// Disable all cells in board
+    /// </summary>
     public void DisableAllCell()
     {
         for (var i = 0; i < cellGroup.childCount; i++)
@@ -68,6 +74,9 @@ public class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable valid cells in board
+    /// </summary>
     public void EnableValidCell()
     {
         for (var i = 0; i < cellGroup.childCount; i++)
@@ -77,6 +86,10 @@ public class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Start game
+    /// hide pvp & pve button, show reset button
+    /// </summary>
     public void GameStart()
     {
         pvpButton.SetActive(false);
@@ -84,6 +97,11 @@ public class UIController : MonoBehaviour
         resetButton.SetActive(true);
     }
 
+    /// <summary>
+    /// Set turn info text
+    /// </summary>
+    /// <param name="turn"></param>
+    /// <param name="isX"></param>
     public void SetTurn(TurnSetting turn, bool isX)
     {
         switch (turn)
@@ -102,6 +120,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show info panel
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="showTime"></param>
     public void SetInfo(string text, float showTime)
     {
         resultPanel.SetActive(true);

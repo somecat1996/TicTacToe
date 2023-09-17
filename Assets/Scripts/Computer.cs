@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Computer : MonoBehaviour
 {
+    /// <summary>
+    /// Determine whether player/computer wins in this board
+    /// </summary>
+    /// <param name="board"></param>
+    /// <param name="useX">true if player/computer using X</param>
+    /// <returns>win: 1, lose: -1, tie or not finish: 0</returns>
     public int Evaluate(char[,] board, bool useX)
     {
         for (var row = 0; row < 3; row++)
@@ -43,6 +49,13 @@ public class Computer : MonoBehaviour
         return 0;
     }
 
+    /// <summary>
+    /// Minimax algorithm
+    /// </summary>
+    /// <param name="board"></param>
+    /// <param name="useX">true if current move using X</param>
+    /// <param name="isMax">true if this step is max</param>
+    /// <returns></returns>
     public int MinMax(char[,] board, bool useX, bool isMax)
     {
         if (Evaluate(board, useX) != 0 || IsFull(board))
@@ -90,6 +103,12 @@ public class Computer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get best move using minimax algorithm
+    /// </summary>
+    /// <param name="board"></param>
+    /// <param name="useX">true if this move is X</param>
+    /// <returns></returns>
     public Vector2Int GetBestMove(char[,] board, bool useX)
     {
         Vector2Int move = new Vector2Int(-1, -1);
@@ -104,7 +123,6 @@ public class Computer : MonoBehaviour
                 {
                     board[row, col] = useX ? 'x' : 'o';
                     currentMoveScore = MinMax(board, useX, false);
-                    //Debug.Log($"Score {currentMoveScore}\n{board[0, 0]},{board[0, 1]},{board[0, 2]}\n{board[1, 0]},{board[1, 1]},{board[1, 2]}\n{board[2, 0]},{board[2, 1]},{board[2, 2]}");
                     board[row, col] = '-';
                     if (currentMoveScore > maxValue)
                     {
@@ -118,6 +136,11 @@ public class Computer : MonoBehaviour
         return move;
     }
 
+    /// <summary>
+    /// Return if game finish
+    /// </summary>
+    /// <param name="board"></param>
+    /// <returns>true if game finish</returns>
     public bool IsFull(char[,] board)
     {
         for (var row = 0; row < 3; row++)
