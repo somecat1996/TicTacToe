@@ -19,6 +19,8 @@ public class UIController : MonoBehaviour
     void Start()
     {
         cellList = new List<TMP_Text>();
+        cellGroup.GetComponent<GridLayoutGroup>().cellSize = new Vector2((Screen.height / 485 * 1080 - 6) / 3, (Screen.height / 485 * 1080 - 6) / 3);
+        cellGroup.GetComponent<GridLayoutGroup>().spacing = new Vector2(3, 3);
         // Load all board cells
         for (var i = 0; i < cellGroup.childCount; i++)
         {

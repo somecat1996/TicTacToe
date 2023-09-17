@@ -16,8 +16,8 @@ public class ResultPanel : MonoBehaviour
     {
         if (coroutine is not null && fadeTimer > 0)
             StopCoroutine(coroutine);
-        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 1);
-        info.color = new Color(info.color.r, info.color.g, info.color.b, 1);
+        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0.6f);
+        info.color = new Color(info.color.r, info.color.g, info.color.b, 0.6f);
         info.text = text;
         if (showTime > 0)
         {
